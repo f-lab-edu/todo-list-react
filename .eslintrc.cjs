@@ -5,52 +5,52 @@ module.exports = {
     node: true,
   },
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "airbnb",
-    "plugin:prettier/recommended",
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'airbnb',
+    'plugin:prettier/recommended',
   ],
   overrides: [
     {
       env: {
         node: true,
       },
-      files: [".eslintrc.{js,cjs}"],
+      files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
-        sourceType: "script",
+        sourceType: 'script',
       },
     },
   ],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
-  plugins: ["@typescript-eslint", "react", "prettier"],
+  plugins: ['@typescript-eslint', 'react', 'prettier'],
   rules: {
-    "import/extensions": [
-      "error",
-      "ignorePackages",
+    'import/extensions': [
+      'error',
+      'ignorePackages',
       {
-        js: "never",
-        jsx: "never",
-        ts: "never",
-        tsx: "never",
-        json: "never",
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+        json: 'never',
       },
     ],
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-filename-extension': [
       1,
       {
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     ],
   },
   settings: {
-    "import/resolver": {
+    'import/resolver': {
       node: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
       typescript: {},
     },
