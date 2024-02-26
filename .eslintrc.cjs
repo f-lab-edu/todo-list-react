@@ -46,6 +46,13 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     ],
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+      },
+    ],
+    'import/no-extraneous-dependencies': 0,
   },
   settings: {
     'import/resolver': {
