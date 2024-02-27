@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useTodoDispatch, Todo } from '@/components/TodoProvider';
+import useTodoStore, { Todo } from '@/stores/todoStore';
 
 const Item = styled.li`
   display: flex;
@@ -67,14 +67,14 @@ const RemoveButton = styled.button`
 `;
 
 const TodoItem = ({ id, done, text }: Todo) => {
-  const dispatch = useTodoDispatch();
+  const { toggleTodo, deleteTodo } = useTodoStore();
 
-  const onToggle = () => {
-    dispatch({ type: 'CHECK', id });
+  const handleToggle = () => {
+    toggleTodo(id);
   };
 
-  const onRemove = () => {
-    dispatch({ type: 'DELETE', id });
+  const handleDelete = () => {
+    deleteTodo(id);
   };
 
   return (
@@ -83,12 +83,12 @@ const TodoItem = ({ id, done, text }: Todo) => {
         role="checkbox"
         aria-checked="false"
         done={done}
-        onClick={onToggle}
+        onClick={handleToggle}
       >
         {done}
       </CheckCircle>
       <Text done={done}>{text}</Text>
-      <RemoveButton type="button" onClick={onRemove}>
+      <RemoveButton type="button" onClick={handleDelete}>
         삭제
       </RemoveButton>
     </Item>

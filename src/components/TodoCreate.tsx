@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import styled from '@emotion/styled';
-import { useTodoDispatch } from '@/components/TodoProvider';
+import useTodoStore from '@/stores/todoStore';
 
 const Input = styled.input`
   padding: 12px;
@@ -13,7 +13,7 @@ const Input = styled.input`
 `;
 
 const TodoCreate = () => {
-  const dispatch = useTodoDispatch();
+  const createTodo = useTodoStore((store) => store.createTodo);
   const [value, setValue] = useState('');
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) =>
@@ -21,13 +21,10 @@ const TodoCreate = () => {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch({
-      type: 'CREATE',
-      todo: {
-        id: Date.now(),
-        text: value,
-        done: false,
-      },
+    createTodo({
+      id: Date.now(),
+      text: value,
+      done: false,
     });
 
     setValue('');
