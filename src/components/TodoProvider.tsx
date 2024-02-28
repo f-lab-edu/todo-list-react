@@ -4,6 +4,7 @@ import {
   ReactNode,
   useContext,
   Dispatch,
+  useMemo,
 } from 'react';
 
 interface Todo {
@@ -54,9 +55,11 @@ const reducer = (state: Todo[], action: Action) => {
 
 const TodoProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const memoizedValue = useMemo(() => ({ state, dispatch }), [state]);
+
   return (
-    <TodoStateContext.Provider value={state}>
-      <TodoDispatchContext.Provider value={dispatch}>
+    <TodoStateContext.Provider value={memoizedValue.state}>
+      <TodoDispatchContext.Provider value={memoizedValue.dispatch}>
         {children}
       </TodoDispatchContext.Provider>
     </TodoStateContext.Provider>

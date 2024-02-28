@@ -1,25 +1,16 @@
-import styled from '@emotion/styled';
 import useInputs from '@/hooks/useInputs';
-
-const Input = styled.input`
-  padding: 12px;
-  border-radius: 4px;
-  border: 1px solid #dee2e6;
-  width: 100%;
-  outline: none;
-  font-size: 18px;
-  box-sizing: border-box;
-`;
+import Input from '@/components/input';
+import { useRef } from 'react';
 
 const TodoCreate = () => {
-  const { value, onChange, onSubmit } = useInputs();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const { onChange, onSubmit } = useInputs({ inputRef });
 
   return (
     <form onSubmit={onSubmit}>
       <Input
-        autoFocus
+        ref={inputRef}
         onChange={onChange}
-        value={value}
         placeholder="할 일을 입력 후, Enter 를 누르세요"
       />
     </form>
