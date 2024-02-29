@@ -69,11 +69,11 @@ const RemoveButton = styled.button`
 const TodoItem = ({ id, done, text }: Todo) => {
   const dispatch = useTodoDispatch();
 
-  const onToggle = () => {
+  const handleToggle = () => {
     dispatch({ type: 'CHECK', id });
   };
 
-  const onRemove = () => {
+  const handleDelete = () => {
     dispatch({ type: 'DELETE', id });
   };
 
@@ -83,12 +83,12 @@ const TodoItem = ({ id, done, text }: Todo) => {
         role="checkbox"
         aria-checked="false"
         done={done}
-        onClick={onToggle}
+        onClick={handleToggle}
       >
         {done}
       </CheckCircle>
       <Text done={done}>{text}</Text>
-      <RemoveButton type="button" onClick={onRemove}>
+      <RemoveButton type="button" onClick={handleDelete}>
         삭제
       </RemoveButton>
     </Item>

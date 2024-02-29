@@ -5,10 +5,10 @@ const useInputs = () => {
   const dispatch = useTodoDispatch();
   const [value, setValue] = useState<string>('');
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) =>
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     setValue(e.target.value);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch({
       type: 'CREATE',
@@ -22,7 +22,7 @@ const useInputs = () => {
     setValue('');
   };
 
-  return { value, onChange, onSubmit };
+  return { value, handleChange, handleSubmit };
 };
 
 export default useInputs;

@@ -12,13 +12,13 @@ const Input = styled.input`
 `;
 
 const TodoCreate = () => {
-  const { value, onChange, onSubmit } = useInputs();
+  const { value, handleChange, handleSubmit } = useInputs();
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit}>
       <Input
         autoFocus
-        onChange={onChange}
+        onChange={handleChange}
         value={value}
         placeholder="할 일을 입력 후, Enter 를 누르세요"
       />
