@@ -1,4 +1,4 @@
-import { useTodoDispatch } from '@/components/TodoProvider';
+import { useTodoDispatch } from '@/stores/TodoProvider';
 import { useState, FormEvent, ChangeEvent } from 'react';
 
 const useInputs = () => {

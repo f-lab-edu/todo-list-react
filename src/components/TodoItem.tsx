@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useTodoDispatch, Todo } from '@/components/TodoProvider';
+import { useTodoDispatch, Todo } from '@/stores/TodoProvider';
 
 const Item = styled.li`
   display: flex;

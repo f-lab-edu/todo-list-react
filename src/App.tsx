@@ -1,4 +1,4 @@
-import TodoProvider from '@/components/TodoProvider';
+import TodoProvider from '@/stores/TodoProvider';
 import TodoList from '@/components/TodoList';
 import TodoCreate from '@/components/TodoCreate';
 import GlobalStyles from '@/GlobalStyles';

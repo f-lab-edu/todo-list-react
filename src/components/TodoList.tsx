@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import styled from '@emotion/styled';
-import { TodoStateContext } from '@/components/TodoProvider';
+import { TodoStateContext } from '@/stores/TodoProvider';
 import TodoItem from '@/components/TodoItem';
 
 const TodoListWrapper = styled.ol`
