@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { FormEvent, RefObject } from 'react';
 import { useTodoDispatch } from '@/stores/TodoProvider';
+import generateUUID from '@/utils/UUIDGenerator';
 
 const useInputs = ({ inputRef }: { inputRef: RefObject<HTMLInputElement> }) => {
   const dispatch = useTodoDispatch();
@@ -13,7 +14,7 @@ const useInputs = ({ inputRef }: { inputRef: RefObject<HTMLInputElement> }) => {
       dispatch({
         type: 'CREATE',
         todo: {
-          id: Date.now(),
+          id: generateUUID(),
           text: inputValue.value,
           done: false,
         },

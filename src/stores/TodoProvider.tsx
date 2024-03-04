@@ -5,9 +5,10 @@ import {
   useContext,
   Dispatch,
 } from 'react';
+import generateUUID from '@/utils/UUIDGenerator';
 
 interface Todo {
-  id: number;
+  id: string;
   text: string;
   done: boolean;
 }
@@ -16,23 +17,23 @@ export type { Todo };
 
 const initialState: Todo[] = [
   {
-    id: Date.now(),
+    id: generateUUID(),
     text: '아침 산책',
     done: true,
   },
   {
-    id: Date.now() + 1,
+    id: generateUUID(),
     text: '오늘의 뉴스 읽기',
     done: true,
   },
-  { id: Date.now() + 3, text: '샌드위치 사 먹기', done: false },
-  { id: Date.now() + 4, text: '리액트 공부하기', done: false },
+  { id: generateUUID(), text: '샌드위치 사 먹기', done: false },
+  { id: generateUUID(), text: '리액트 공부하기', done: false },
 ];
 
 type Action =
   | { type: 'CREATE'; todo: Todo }
-  | { type: 'CHECK'; id: number }
-  | { type: 'DELETE'; id: number };
+  | { type: 'CHECK'; id: string }
+  | { type: 'DELETE'; id: string };
 
 export const TodoStateContext = createContext<Todo[]>([]);
 export const TodoDispatchContext = createContext<Dispatch<Action> | null>(null);
