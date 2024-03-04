@@ -1,28 +1,29 @@
+/* eslint-disable no-param-reassign */
+import { FormEvent, RefObject } from 'react';
 import { useTodoDispatch } from '@/stores/TodoProvider';
-import { useState, FormEvent, ChangeEvent } from 'react';
 
-const useInputs = () => {
+const useInputs = ({ inputRef }: { inputRef: RefObject<HTMLInputElement> }) => {
   const dispatch = useTodoDispatch();
-  const [value, setValue] = useState<string>('');
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setValue(e.target.value);
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch({
-      type: 'CREATE',
-      todo: {
-        id: Date.now(),
-        text: value,
-        done: false,
-      },
-    });
+    const inputValue = inputRef.current;
 
-    setValue('');
+    if (inputValue) {
+      dispatch({
+        type: 'CREATE',
+        todo: {
+          id: Date.now(),
+          text: inputValue.value,
+          done: false,
+        },
+      });
+
+      inputRef.current.value = '';
+    }
   };
 
-  return { value, handleChange, handleSubmit };
+  return { onSubmit };
 };
 
 export default useInputs;
