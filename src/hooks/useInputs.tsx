@@ -1,15 +1,9 @@
 /* eslint-disable no-param-reassign */
 import { useTodoDispatch } from '@/components/TodoProvider';
-import { FormEvent, ChangeEvent, RefObject } from 'react';
+import { FormEvent, RefObject } from 'react';
 
 const useInputs = ({ inputRef }: { inputRef: RefObject<HTMLInputElement> }) => {
   const dispatch = useTodoDispatch();
-
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (inputRef.current) {
-      inputRef.current.value = e.target.value;
-    }
-  };
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,7 +23,7 @@ const useInputs = ({ inputRef }: { inputRef: RefObject<HTMLInputElement> }) => {
     }
   };
 
-  return { onChange, onSubmit };
+  return { onSubmit };
 };
 
 export default useInputs;

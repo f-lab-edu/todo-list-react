@@ -4,15 +4,11 @@ import { useRef } from 'react';
 
 const TodoCreate = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { onChange, onSubmit } = useInputs({ inputRef });
+  const { onSubmit } = useInputs({ inputRef });
 
   return (
     <form onSubmit={onSubmit}>
-      <Input
-        ref={inputRef}
-        onChange={onChange}
-        placeholder="할 일을 입력 후, Enter 를 누르세요"
-      />
+      <Input ref={inputRef} placeholder="할 일을 입력 후, Enter 를 누르세요" />
     </form>
   );
 };
