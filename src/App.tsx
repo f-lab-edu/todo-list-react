@@ -1,4 +1,3 @@
-import TodoProvider from '@/components/TodoProvider';
 import TodoList from '@/components/TodoList';
 import TodoCreate from '@/components/TodoCreate';
 import GlobalStyles from '@/GlobalStyles';
@@ -10,11 +9,9 @@ const App = () => {
     <>
       <GlobalStyles />
       <TodoWrapper>
-        <TodoProvider>
-          <TodoHead />
-          <TodoList />
-          <TodoCreate />
-        </TodoProvider>
+        <TodoHead />
+        <TodoList />
+        <TodoCreate />
       </TodoWrapper>
     </>
   );

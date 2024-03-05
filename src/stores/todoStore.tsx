@@ -1,8 +1,9 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import generateUUID from '@/utils/UUIDGenerator';
 
 interface Todo {
-  id: number;
+  id: string;
   text: string;
   done: boolean;
 }
@@ -12,8 +13,8 @@ export type { Todo };
 interface TodoState {
   todos: Todo[];
   createTodo: (todo: Todo) => void;
-  toggleTodo: (id: number) => void;
-  deleteTodo: (id: number) => void;
+  toggleTodo: (id: string) => void;
+  deleteTodo: (id: string) => void;
 }
 
 const useTodoStore = create(
@@ -21,17 +22,17 @@ const useTodoStore = create(
     (set) => ({
       todos: [
         {
-          id: Date.now(),
+          id: generateUUID(),
           text: '아침 산책',
           done: true,
         },
         {
-          id: Date.now() + 1,
+          id: generateUUID(),
           text: '오늘의 뉴스 읽기',
           done: true,
         },
-        { id: Date.now() + 3, text: '샌드위치 사 먹기', done: false },
-        { id: Date.now() + 4, text: '리액트 공부하기', done: false },
+        { id: generateUUID(), text: '샌드위치 사 먹기', done: false },
+        { id: generateUUID(), text: '리액트 공부하기', done: false },
       ],
 
       createTodo: (todo) => set((state) => ({ todos: [...state.todos, todo] })),
