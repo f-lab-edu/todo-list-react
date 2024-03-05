@@ -53,6 +53,8 @@ module.exports = {
       },
     ],
     'import/no-extraneous-dependencies': 0,
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
   },
   settings: {
     'import/resolver': {

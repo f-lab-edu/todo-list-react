@@ -1,6 +1,5 @@
-import { useContext } from 'react';
 import styled from '@emotion/styled';
-import { TodoStateContext } from '@/stores/TodoProvider';
+import useTodoStore from '@/stores/todoStore';
 import TodoItem from '@/components/TodoItem';
 
 const TodoListWrapper = styled.ol`
@@ -11,7 +10,7 @@ const TodoListWrapper = styled.ol`
 `;
 
 const TodoList = () => {
-  const todos = useContext(TodoStateContext);
+  const todos = useTodoStore((state) => state.todos);
   return (
     <TodoListWrapper>
       {todos.map((todo) => (

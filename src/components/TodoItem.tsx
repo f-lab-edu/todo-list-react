@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useTodoDispatch, Todo } from '@/stores/TodoProvider';
+import useTodoStore, { Todo } from '@/stores/todoStore';
 
 const Item = styled.li`
   display: flex;
@@ -67,14 +67,14 @@ const RemoveButton = styled.button`
 `;
 
 const TodoItem = ({ id, done, text }: Todo) => {
-  const dispatch = useTodoDispatch();
+  const { toggleTodo, deleteTodo } = useTodoStore();
 
   const handleToggle = () => {
-    dispatch({ type: 'CHECK', id });
+    toggleTodo(id);
   };
 
   const handleDelete = () => {
-    dispatch({ type: 'DELETE', id });
+    deleteTodo(id);
   };
 
   return (
